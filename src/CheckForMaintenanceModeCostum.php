@@ -37,9 +37,7 @@ class CheckForMaintenanceModeCostum
      */
     public function handle($request, Closure $next)
     {   
-        $route = Route::getCurrentRoute()->getActionName();
-
-        if($route != "artisan-gui"){
+        if(strpos($_SERVER['REQUEST_URI'], "artisan-gui") == false){
             if ($this->app->isDownForMaintenance()) {
                 $data = json_decode(file_get_contents($this->app->storagePath().'/framework/down'), true);
 
