@@ -11,20 +11,12 @@ class ComposerStaticInit42b554630353a2576543c5c26c519918
         array (
             'Martins\\ArtisanGUI\\' => 19,
         ),
-        'A' => 
-        array (
-            'App\\' => 4,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Martins\\ArtisanGUI\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/martins-74/artisan-gui/src',
-        ),
-        'App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
