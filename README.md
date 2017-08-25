@@ -1,4 +1,4 @@
-# Artisan GUI
+# Artisan GUI for Laravel 5.3+
 Artisan GUI is a Laravel Graphic User Interface for Artisan Comands. (Works on Live Servers with out SSH).
 
 Artisan GUI is able to run when Laravel is in maintence mode, letting you executing commands with out harming your users.
