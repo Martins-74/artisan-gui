@@ -28,12 +28,11 @@ Now we need to publish the configurations, we do this by executing:
 	php artisan vendor:publish
 
 
-The last thing to do is to add a new line in the .env file, the password:
+The last thing to do is to edit the password in config/artisan-gui-configs.php file:
 
-	Martins_GUI=wellthisisthesafestpassword
+	'password' => "wellthisisthesafestpassword",
 
-> **Tip:** Artisan GUI only works when Laravel is in Debug Mode for security reasons so be sure that APP_DEBUG is set to true .
-"APP_DEBUG=true"
+> **Tip:** Artisan GUI works when Laravel is in Debug Mode for security reasons so be sure that APP_DEBUG is set to true ("APP_DEBUG=true"), however you can change this depencie in config/artisan-gui-configs.php ('useLaravelDebug' => "no") to let you activate/disable Artisan GUI with other variable ('artisanGUISwitch' => "on") also set in the same file.
 
 That's it know navigate to www.yoursite.com/artisan-gui
 
