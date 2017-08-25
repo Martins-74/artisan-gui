@@ -11,9 +11,6 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "classmap": [
-            "database"
-        ],
         "psr-4": {
             "App\\": "app/",
             "Martins\\ArtisanGUI\\": "martins-74/artisan-gui/src"
