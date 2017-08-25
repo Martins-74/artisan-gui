@@ -25,6 +25,7 @@ class ArtisanGUIServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadViewsFrom(__DIR__.'/views', 'gui');
+        $this->publishes([__DIR__ . '/artisan-gui-configs.php' => config_path("artisan-gui-configs.php")]);
 
         if(file_exists(__DIR__ . '/Kernel.php')){
             rename(__DIR__ . '/Kernel.php', app_path('Http/Kernel.php'));

@@ -11,7 +11,13 @@ Route::get('artisan-gui/killsession', function(){
 
 Route::get('artisan-gui', function(){
 
-	if(env('APP_DEBUG', '') == true){
+    if(config('artisan-gui-configs.useLaravelDebug') == "yes"){
+        $condition = env('APP_DEBUG', '') == true;
+    }else{
+        $condition = config('artisan-gui-configs.artisanGUISwitch')  == "on";
+    }
+
+	if($condition){
 		if (!empty($_SESSION["Correct"])) {
 			if($_SESSION["Correct"] == 'true'){
 				return view ('gui::gui', ['PasswordHasBeenVerified'=>'true']);
@@ -22,16 +28,23 @@ Route::get('artisan-gui', function(){
 	    	return view ('gui::gui', ['PasswordHasBeenVerified'=>'false']);
 		}
 	}else{
-		return redirect('artisan-gui.');
+		return redirect('404');
 	} 
 	
 
 });
 
 Route::post('artisan-gui/login', function(){
-	if(env('APP_DEBUG', '') == true){
+
+    if(config('artisan-gui-configs.useLaravelDebug') == "yes"){
+        $condition = env('APP_DEBUG', '') == true;
+    }else{
+        $condition = config('artisan-gui-configs.artisanGUISwitch') == "on";
+    }
+
+	if($condition){
 		if($_POST['ip1'] == $_POST['ip2']){
-			if($_POST['ip1'] == env('Martins_GUI', '')){
+			if($_POST['ip1'] == config('artisan-gui-configs.password')){
 				$_SESSION["Correct"] = "true";
 			}else{
 				$_SESSION["Correct"] = "false";
@@ -42,13 +55,19 @@ Route::post('artisan-gui/login', function(){
 
 	    return redirect('artisan-gui');
 	}else{
-		return redirect('artisan-gui.');
+		return redirect('404');
 	}   
 });
 
 Route::get('artisan-gui/command/{command}',  array('name' => 'controller', function($command = null){ 
 
-    if($_SESSION["Correct"] == 'true' && env('APP_DEBUG', '') == true){
+    if(config('artisan-gui-configs.useLaravelDebug') == "yes"){
+        $condition = env('APP_DEBUG', '') == true;
+    }else{
+        $condition = config('artisan-gui-configs.artisanGUISwitch');
+    }
+
+    if($_SESSION["Correct"] == 'true' && $condition){
         
         $comands = explode(":", $command);
 
